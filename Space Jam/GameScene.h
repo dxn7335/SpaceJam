@@ -7,7 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+#import "MusicButton.h"
 @interface GameScene : SKScene
+
+@property NSMutableArray *musicBtns;
 
 @end

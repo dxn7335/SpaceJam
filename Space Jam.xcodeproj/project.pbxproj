@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		305630351A2FC8610004D36F /* MusicButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 305630341A2FC8610004D36F /* MusicButton.m */; };
+		305630371A2FC8940004D36F /* Oh Baby A Triple.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 305630361A2FC8940004D36F /* Oh Baby A Triple.mp3 */; };
 		30AA583C1A2E7EB300AF1F88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA583B1A2E7EB300AF1F88 /* main.m */; };
 		30AA583F1A2E7EB300AF1F88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA583E1A2E7EB300AF1F88 /* AppDelegate.m */; };
 		30AA58421A2E7EB300AF1F88 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA58411A2E7EB300AF1F88 /* GameScene.m */; };
@@ -30,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		305630331A2FC8610004D36F /* MusicButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicButton.h; sourceTree = "<group>"; };
+		305630341A2FC8610004D36F /* MusicButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicButton.m; sourceTree = "<group>"; };
+		305630361A2FC8940004D36F /* Oh Baby A Triple.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Oh Baby A Triple.mp3"; sourceTree = "<group>"; };
 		30AA58361A2E7EB200AF1F88 /* Space Jam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Jam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30AA583A1A2E7EB300AF1F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30AA583B1A2E7EB300AF1F88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -68,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		305630381A2FC8C40004D36F /* Sound Files */ = {
+			isa = PBXGroup;
+			children = (
+				305630361A2FC8940004D36F /* Oh Baby A Triple.mp3 */,
+			);
+			name = "Sound Files";
+			sourceTree = "<group>";
+		};
 		30AA582D1A2E7EB200AF1F88 = {
 			isa = PBXGroup;
 			children = (
@@ -90,8 +103,11 @@
 		30AA58381A2E7EB200AF1F88 /* Space Jam */ = {
 			isa = PBXGroup;
 			children = (
+				305630381A2FC8C40004D36F /* Sound Files */,
 				30AA583D1A2E7EB300AF1F88 /* AppDelegate.h */,
 				30AA583E1A2E7EB300AF1F88 /* AppDelegate.m */,
+				305630331A2FC8610004D36F /* MusicButton.h */,
+				305630341A2FC8610004D36F /* MusicButton.m */,
 				30AA58401A2E7EB300AF1F88 /* GameScene.h */,
 				30AA58411A2E7EB300AF1F88 /* GameScene.m */,
 				30AA58431A2E7EB300AF1F88 /* GameScene.sks */,
@@ -211,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				305630371A2FC8940004D36F /* Oh Baby A Triple.mp3 in Resources */,
 				30AA584F1A2E7EB300AF1F88 /* LaunchScreen.xib in Resources */,
 				30AA584C1A2E7EB300AF1F88 /* Images.xcassets in Resources */,
 				30AA58441A2E7EB300AF1F88 /* GameScene.sks in Resources */,
@@ -236,6 +253,7 @@
 				30AA583F1A2E7EB300AF1F88 /* AppDelegate.m in Sources */,
 				30AA58421A2E7EB300AF1F88 /* GameScene.m in Sources */,
 				30AA583C1A2E7EB300AF1F88 /* main.m in Sources */,
+				305630351A2FC8610004D36F /* MusicButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
