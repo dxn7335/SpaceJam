@@ -12,6 +12,7 @@
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
+    /*
     SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     
     myLabel.text = @"Hello, World!";
@@ -20,11 +21,20 @@
                                    CGRectGetMidY(self.frame));
     
     [self addChild:myLabel];
-}
+     */
+    self.backgroundColor = [UIColor blackColor];
+    CGRect box = CGRectMake(CGRectGetWidth(self.frame)/2-50, CGRectGetHeight(self.frame)/2, 100, 100);
+    UIBezierPath *circlePath = [UIBezierPath bezierPathWithOvalInRect:box];
+    
+    SKShapeNode *circle = [SKShapeNode node];
+    circle.path = circlePath.CGPath;
+    circle.fillColor = [UIColor whiteColor];
+    [self addChild:circle];
+    }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    
+    /*
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
@@ -40,6 +50,7 @@
         
         [self addChild:sprite];
     }
+     */
 }
 
 -(void)update:(CFTimeInterval)currentTime {
