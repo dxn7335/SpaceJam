@@ -8,6 +8,7 @@
 
 #import "GameViewController.h"
 #import "GameScene.h"
+#import <SpriteKit/SpriteKit.h>
 
 @implementation SKScene (Unarchive)
 

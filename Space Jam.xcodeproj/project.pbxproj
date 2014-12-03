@@ -16,6 +16,7 @@
 		30AA584C1A2E7EB300AF1F88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30AA584B1A2E7EB300AF1F88 /* Images.xcassets */; };
 		30AA584F1A2E7EB300AF1F88 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30AA584D1A2E7EB300AF1F88 /* LaunchScreen.xib */; };
 		30AA585B1A2E7EB300AF1F88 /* Space_JamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA585A1A2E7EB300AF1F88 /* Space_JamTests.m */; };
+		3F15292F1A2FA10C00A6A5D5 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F15292E1A2FA10C00A6A5D5 /* SpriteKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		30AA58541A2E7EB300AF1F88 /* Space JamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Space JamTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30AA58591A2E7EB300AF1F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30AA585A1A2E7EB300AF1F88 /* Space_JamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Space_JamTests.m; sourceTree = "<group>"; };
+		3F15292E1A2FA10C00A6A5D5 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F15292F1A2FA10C00A6A5D5 /* SpriteKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +71,7 @@
 		30AA582D1A2E7EB200AF1F88 = {
 			isa = PBXGroup;
 			children = (
+				3F15292E1A2FA10C00A6A5D5 /* SpriteKit.framework */,
 				30AA58381A2E7EB200AF1F88 /* Space Jam */,
 				30AA58571A2E7EB300AF1F88 /* Space JamTests */,
 				30AA58371A2E7EB200AF1F88 /* Products */,
@@ -358,6 +362,7 @@
 				INFOPLIST_FILE = "Space Jam/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -368,6 +373,7 @@
 				INFOPLIST_FILE = "Space Jam/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -424,6 +430,7 @@
 				30AA58601A2E7EB300AF1F88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		30AA58611A2E7EB300AF1F88 /* Build configuration list for PBXNativeTarget "Space JamTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +439,7 @@
 				30AA58631A2E7EB300AF1F88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

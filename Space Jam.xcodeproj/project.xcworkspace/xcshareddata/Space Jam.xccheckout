@@ -10,6 +10,8 @@
 	<string>Space Jam</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>3B29E9E90BE2568FF85AF489EB787BBA29C10B8A</key>
+		<string>https://github.com/dxn7335/SpaceJam.git</string>
 		<key>E1CDCEF14F8690986A61E9DF5DCFCDFD54FF18F8</key>
 		<string>https://github.com/dxn7335/SpaceJam.git</string>
 	</dict>
@@ -17,15 +19,17 @@
 	<string>Space Jam.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E1CDCEF14F8690986A61E9DF5DCFCDFD54FF18F8</key>
+		<key>3B29E9E90BE2568FF85AF489EB787BBA29C10B8A</key>
 		<string>../..</string>
+		<key>E1CDCEF14F8690986A61E9DF5DCFCDFD54FF18F8</key>
+		<string>../../../Space%20Jam</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/dxn7335/SpaceJam.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E1CDCEF14F8690986A61E9DF5DCFCDFD54FF18F8</string>
+	<string>3B29E9E90BE2568FF85AF489EB787BBA29C10B8A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>E1CDCEF14F8690986A61E9DF5DCFCDFD54FF18F8</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Space%20Jam</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3B29E9E90BE2568FF85AF489EB787BBA29C10B8A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SpaceJam</string>
 		</dict>
 	</array>
 </dict>
