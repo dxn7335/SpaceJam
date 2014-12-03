@@ -26,8 +26,11 @@
     
     self.backgroundColor = [UIColor whiteColor];
     
+    
+    // TEST: Creating buttons
     MusicButton *btn1 = [[MusicButton alloc] initWithProperties:CGRectGetWidth(self.frame)/2-50 :CGRectGetHeight(self.frame)/2 :100 :100];
     btn1.userInteractionEnabled = NO;
+    [btn1 loadSound];
     [self.musicBtns addObject:btn1];
     [self addChild:btn1];
     

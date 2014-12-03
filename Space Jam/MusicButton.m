@@ -27,7 +27,7 @@
 
 // loadSound: loads the audio files
 -(void)loadSound{
-    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"address" ofType:@"mp3"];
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"Oh Baby A Triple" ofType:@"mp3"];
     
     NSURL *url = [[NSURL alloc]initFileURLWithPath:soundPath];
     NSError *error;
@@ -38,6 +38,7 @@
 
 // playSound: plays the audio files --
 -(void)playSound{
+    [_player play];
     NSLog(@"Lanxi you bitch!");
 }
 
