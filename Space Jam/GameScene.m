@@ -8,7 +8,9 @@
 
 #import "GameScene.h"
 
-@implementation GameScene
+@implementation GameScene{
+    MusicButton *_currentBtn;
+}
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
@@ -32,6 +34,7 @@
     MusicButton *btn1 = [[MusicButton alloc] initWithProperties: self.frame.size.width/2 :self.frame.size.height/2 : 75 :75];
     btn1.userInteractionEnabled = NO;
     //[btn1 loadSound];
+    btn1.name = @"1";
     [btn1 setDefault];
     [self.musicBtns addObject:btn1];
     [self addChild:btn1];
@@ -40,6 +43,7 @@
     MusicButton *btn2 = [[MusicButton alloc] initWithProperties:400:400: 50: 50];
     btn2.userInteractionEnabled = NO;
     //[btn2 loadSound];
+    btn2.name = @"2";
     [btn2 setDefault];
     [self.musicBtns addObject:btn2];
     [self addChild:btn2];
@@ -79,11 +83,25 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     for (MusicButton *musicNode in self.musicBtns) {
-        if ([node isEqual: musicNode]) {
-            [musicNode playSound];
+        NSLog(@"node = %@", node.parent);
+        //if ([node isEqual: musicNode]) {
+        if ([node.parent  isEqual: musicNode]) {
+            if(musicNode.hasSound){
+                [musicNode playSound];
+                _currentBtn = musicNode;
+            }
+            else{
+                [musicNode setButton];
+            }
         }
     }
     
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    if(_currentBtn != nil){
+        [_currentBtn stopSound];
+    }
 }
 
 -(void)update:(CFTimeInterval)currentTime {

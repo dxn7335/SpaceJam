@@ -10,43 +10,30 @@
 
 
 @implementation MusicButton{
+    AVAudioRecorder *_recorder;
     AVAudioPlayer *_player;
     SKShapeNode *circle;
-    int _x;
-    int _y;
-    double _w;
-    double _h;
 }
 
 -(id)initWithProperties : (int) x : (int) y : (double)width : (double)height{
     self = [super init];
     if (self != nil) {
-        //self.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(x, y, width, height)].CGPath;
-                //self.fillColor = [self randomColor];
-        //self.strokeColor = self.fillColor;
-        //self.strokeColor = [self randomColor];
-        //self.fillColor = [UIColor whiteColor];
-        _x = x;
-        _y = y;
-        _w = width;
-        _h = height;
         self.position = CGPointMake(x, y);
         circle = [[SKShapeNode alloc]init];
         circle.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
         circle.strokeColor = [self randomColor];
-        
-        self.hasSound = false;
         [self addChild:circle];
+        
+        _player = [[AVAudioPlayer alloc]init];
     }
     
-    _player = [[AVAudioPlayer alloc]init];
     
     return self;
 }
 
 // loadSound: loads the audio files
 -(void)loadSound{
-    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"Oh Baby A Triple" ofType:@"mp3"];
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"air-horn" ofType:@"mp3"];
     
     NSURL *url = [[NSURL alloc]initFileURLWithPath:soundPath];
     NSError *error;
@@ -57,8 +44,14 @@
 
 // playSound: plays the audio files --
 -(void)playSound{
+    _player.currentTime = 0;
+    _player.numberOfLoops = -1;
     [_player play];
-    NSLog(@"Lanxi you bitch!");
+}
+
+// stopSound: stops looping of sound
+-(void)stopSound{
+    _player.numberOfLoops = 0;
 }
 
 /*
@@ -68,18 +61,24 @@
 */
 -(void)setDefault{
     SKLabelNode *plus = [[SKLabelNode alloc] init];
+    plus.name= @"add";
     plus.text = @"+";
     plus.fontColor = circle.strokeColor;
     //plus.fontName = @"Avenir";
     plus.fontSize = circle.frame.size.width/1.5;
     plus.position = CGPointMake(0,-plus.frame.size.height/2);
     [self addChild:plus];
+    
+    self.hasSound = false;
 }
 
 -(void)setButton{
     [self loadSound];
     circle.fillColor = circle.strokeColor;
-    [self removeAllChildren];
+    [self enumerateChildNodesWithName:@"add" usingBlock:^(SKNode *node, BOOL *stop) {
+        [node removeFromParent];
+    }];
+    self.hasSound = true;
     
 }
 
@@ -91,6 +90,10 @@
     UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
     
     return color;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    NSLog(@"HI");
 }
 
 @end

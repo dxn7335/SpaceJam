@@ -10,12 +10,16 @@
 #import <SpriteKit/SpriteKit.h>
 @import AVFoundation;
 
-@interface MusicButton : SKSpriteNode
+@interface MusicButton : SKSpriteNode <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
 @property(nonatomic) Boolean hasSound;
 
 -(id)initWithProperties: (int) x : (int) y : (double)width : (double)height;
+// Audio
 -(void)loadSound;
 -(void)playSound;
+-(void)stopSound;
+// Configuring Settings for Button
 -(void)setDefault;
+-(void)setButton;
 @end
