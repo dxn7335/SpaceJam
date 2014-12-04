@@ -81,6 +81,15 @@
 			name = "Sound Files";
 			sourceTree = "<group>";
 		};
+		305630391A2FF12F0004D36F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				305630331A2FC8610004D36F /* MusicButton.h */,
+				305630341A2FC8610004D36F /* MusicButton.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		30AA582D1A2E7EB200AF1F88 = {
 			isa = PBXGroup;
 			children = (
@@ -106,8 +115,7 @@
 				305630381A2FC8C40004D36F /* Sound Files */,
 				30AA583D1A2E7EB300AF1F88 /* AppDelegate.h */,
 				30AA583E1A2E7EB300AF1F88 /* AppDelegate.m */,
-				305630331A2FC8610004D36F /* MusicButton.h */,
-				305630341A2FC8610004D36F /* MusicButton.m */,
+				305630391A2FF12F0004D36F /* Model */,
 				30AA58401A2E7EB300AF1F88 /* GameScene.h */,
 				30AA58411A2E7EB300AF1F88 /* GameScene.m */,
 				30AA58431A2E7EB300AF1F88 /* GameScene.sks */,
