@@ -76,7 +76,7 @@
     
     NSError *error;
     _player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    _player.volume = 1.0;
+    _player.volume = (self.recording) ? 7.0:1.0;
     if(error) NSLog(@"Error loading sound file! error = %@", error);
 }
 
