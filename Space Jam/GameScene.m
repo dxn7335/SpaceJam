@@ -24,21 +24,34 @@
      */
     self.musicBtns = [[NSMutableArray alloc] init];
     
-    self.backgroundColor = [UIColor blackColor];
+    self.backgroundColor = [UIColor whiteColor];
     
     
     // TEST: Creating buttons
-    MusicButton *btn1 = [[MusicButton alloc] initWithProperties:CGRectGetWidth(self.frame)/2-50 :CGRectGetHeight(self.frame)/2 :100 :100];
+    // Parameters x, y, width, height
+    MusicButton *btn1 = [[MusicButton alloc] initWithProperties: self.frame.size.width/2 :self.frame.size.height/2 : 75 :75];
     btn1.userInteractionEnabled = NO;
-    [btn1 loadSound];
+    //[btn1 loadSound];
+    [btn1 setDefault];
     [self.musicBtns addObject:btn1];
     [self addChild:btn1];
     
-    MusicButton *btn2 = [[MusicButton alloc] initWithProperties:CGRectGetWidth(self.frame)/2-50 :CGRectGetHeight(self.frame)/2+100 :50 :50];
+    
+    MusicButton *btn2 = [[MusicButton alloc] initWithProperties:400:400: 50: 50];
     btn2.userInteractionEnabled = NO;
-    [btn2 loadSound];
+    //[btn2 loadSound];
+    [btn2 setDefault];
     [self.musicBtns addObject:btn2];
     [self addChild:btn2];
+    
+    /*
+    SKLabelNode *plus = [[SKLabelNode alloc] init];
+    plus.text = @"+";
+    plus.fontColor = btn1.strokeColor;
+    plus.fontName = @"Avenir";
+    plus.fontSize = 50;
+    plus.position = CGPointMake(CGRectGetWidth(self.frame)/2-50 ,CGRectGetHeight(self.frame)/2);*/
+    //[btn1 addChild:plus];
     
 }
 

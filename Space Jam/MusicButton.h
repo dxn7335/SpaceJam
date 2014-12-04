@@ -10,9 +10,12 @@
 #import <SpriteKit/SpriteKit.h>
 @import AVFoundation;
 
-@interface MusicButton : SKShapeNode
+@interface MusicButton : SKSpriteNode
 
--(id)initWithProperties: (double)width : (double)height : (int) x : (int) y;
+@property(nonatomic) Boolean hasSound;
+
+-(id)initWithProperties: (int) x : (int) y : (double)width : (double)height;
 -(void)loadSound;
 -(void)playSound;
+-(void)setDefault;
 @end

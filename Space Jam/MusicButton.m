@@ -11,14 +11,32 @@
 
 @implementation MusicButton{
     AVAudioPlayer *_player;
+    SKShapeNode *circle;
+    int _x;
+    int _y;
+    double _w;
+    double _h;
 }
 
--(id)initWithProperties : (double)width : (double)height : (int)x : (int)y{
+-(id)initWithProperties : (int) x : (int) y : (double)width : (double)height{
     self = [super init];
     if (self != nil) {
-        self.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(width, height, x, y)].CGPath;
-        self.fillColor = [self randomColor];
-        self.strokeColor = self.fillColor;
+        //self.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(x, y, width, height)].CGPath;
+                //self.fillColor = [self randomColor];
+        //self.strokeColor = self.fillColor;
+        //self.strokeColor = [self randomColor];
+        //self.fillColor = [UIColor whiteColor];
+        _x = x;
+        _y = y;
+        _w = width;
+        _h = height;
+        self.position = CGPointMake(x, y);
+        circle = [[SKShapeNode alloc]init];
+        circle.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
+        circle.strokeColor = [self randomColor];
+        
+        self.hasSound = false;
+        [self addChild:circle];
     }
     
     _player = [[AVAudioPlayer alloc]init];
@@ -48,6 +66,24 @@
     NSLog(@"HI");
 }
 */
+-(void)setDefault{
+    SKLabelNode *plus = [[SKLabelNode alloc] init];
+    plus.text = @"+";
+    plus.fontColor = circle.strokeColor;
+    //plus.fontName = @"Avenir";
+    plus.fontSize = circle.frame.size.width/1.5;
+    plus.position = CGPointMake(0,-plus.frame.size.height/2);
+    [self addChild:plus];
+}
+
+-(void)setButton{
+    [self loadSound];
+    circle.fillColor = circle.strokeColor;
+    [self removeAllChildren];
+    
+}
+
+// randomColor : generates and returns a random color
 -(UIColor*)randomColor{
     CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
     CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
@@ -56,4 +92,5 @@
     
     return color;
 }
+
 @end
