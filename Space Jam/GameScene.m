@@ -36,11 +36,12 @@
     //[btn1 loadSound];
     btn1.name = @"1";
     [btn1 setDefault];
+    [btn1 setButton];
     [self.musicBtns addObject:btn1];
     [self addChild:btn1];
     
     
-    MusicButton *btn2 = [[MusicButton alloc] initWithProperties:400:400: 50: 50];
+    MusicButton *btn2 = [[MusicButton alloc] initWithProperties:400:400: 75: 75];
     btn2.userInteractionEnabled = NO;
     //[btn2 loadSound];
     btn2.name = @"2";
@@ -87,11 +88,15 @@
         //if ([node isEqual: musicNode]) {
         if ([node.parent  isEqual: musicNode]) {
             if(musicNode.hasSound){
-                [musicNode playSound];
                 _currentBtn = musicNode;
+                [musicNode playSound];
             }
             else{
-                [musicNode setButton];
+                //[musicNode setButton];
+                if(!musicNode.recording)
+                    [musicNode prepareRecording];
+                else
+                    [musicNode stopRecording];
             }
         }
     }

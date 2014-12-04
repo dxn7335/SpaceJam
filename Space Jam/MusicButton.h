@@ -8,17 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
+#import <CoreAudio/CoreAudioTypes.h>
+
 @import AVFoundation;
 
 @interface MusicButton : SKSpriteNode <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
-@property(nonatomic) Boolean hasSound;
-
+@property(nonatomic) BOOL hasSound;
+@property(nonatomic) BOOL recording;
 -(id)initWithProperties: (int) x : (int) y : (double)width : (double)height;
 // Audio
 -(void)loadSound;
 -(void)playSound;
 -(void)stopSound;
+-(void)prepareRecording;
+-(void)startRecording;
+-(void)stopRecording;
 // Configuring Settings for Button
 -(void)setDefault;
 -(void)setButton;
