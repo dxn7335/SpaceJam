@@ -18,6 +18,7 @@
     if (self != nil) {
         self.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(width, height, x, y)].CGPath;
         self.fillColor = [self randomColor];
+        self.strokeColor = self.fillColor;
     }
     
     _player = [[AVAudioPlayer alloc]init];

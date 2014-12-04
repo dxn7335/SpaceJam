@@ -112,7 +112,6 @@
 		30AA58381A2E7EB200AF1F88 /* Space Jam */ = {
 			isa = PBXGroup;
 			children = (
-				305630381A2FC8C40004D36F /* Sound Files */,
 				30AA583D1A2E7EB300AF1F88 /* AppDelegate.h */,
 				30AA583E1A2E7EB300AF1F88 /* AppDelegate.m */,
 				305630391A2FF12F0004D36F /* Model */,
@@ -124,6 +123,7 @@
 				30AA58481A2E7EB300AF1F88 /* Main.storyboard */,
 				30AA584B1A2E7EB300AF1F88 /* Images.xcassets */,
 				30AA584D1A2E7EB300AF1F88 /* LaunchScreen.xib */,
+				305630381A2FC8C40004D36F /* Sound Files */,
 				30AA58391A2E7EB300AF1F88 /* Supporting Files */,
 			);
 			path = "Space Jam";

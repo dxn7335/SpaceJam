@@ -24,7 +24,7 @@
      */
     self.musicBtns = [[NSMutableArray alloc] init];
     
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor blackColor];
     
     
     // TEST: Creating buttons
@@ -36,6 +36,7 @@
     
     MusicButton *btn2 = [[MusicButton alloc] initWithProperties:CGRectGetWidth(self.frame)/2-50 :CGRectGetHeight(self.frame)/2+100 :50 :50];
     btn2.userInteractionEnabled = NO;
+    [btn2 loadSound];
     [self.musicBtns addObject:btn2];
     [self addChild:btn2];
     
