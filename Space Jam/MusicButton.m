@@ -70,7 +70,7 @@
         url = _recorder.url;
     }
     else{
-        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"air-horn" ofType:@"mp3"];
+        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"pentakill_lol" ofType:@"mp3"];
         url = [[NSURL alloc]initFileURLWithPath:soundPath];
     }
     
@@ -107,7 +107,7 @@
 // RECORDING
 /---------------------------------------------------------------------------*/
 -(void) prepareRecording{
-    NSLog(@"Reording this motherfucker");
+    NSLog(@"Reording this");
     /* Visuals */
     _label.text= @"Recording";
     _label.fontSize = 13;

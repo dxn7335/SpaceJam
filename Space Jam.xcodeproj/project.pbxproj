@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302A976D1A3A395100C0128F /* pentakill_lol.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 302A976C1A3A395100C0128F /* pentakill_lol.mp3 */; };
 		3047ABA11A30346800C59477 /* air-horn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3047ABA01A30346800C59477 /* air-horn.mp3 */; };
 		305630351A2FC8610004D36F /* MusicButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 305630341A2FC8610004D36F /* MusicButton.m */; };
 		305630371A2FC8940004D36F /* Oh Baby A Triple.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 305630361A2FC8940004D36F /* Oh Baby A Triple.mp3 */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		302A976C1A3A395100C0128F /* pentakill_lol.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pentakill_lol.mp3; sourceTree = "<group>"; };
 		3047ABA01A30346800C59477 /* air-horn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "air-horn.mp3"; sourceTree = "<group>"; };
 		305630331A2FC8610004D36F /* MusicButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicButton.h; sourceTree = "<group>"; };
 		305630341A2FC8610004D36F /* MusicButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicButton.m; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				3047ABA01A30346800C59477 /* air-horn.mp3 */,
+				302A976C1A3A395100C0128F /* pentakill_lol.mp3 */,
 				305630361A2FC8940004D36F /* Oh Baby A Triple.mp3 */,
 			);
 			name = "Sound Files";
@@ -238,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302A976D1A3A395100C0128F /* pentakill_lol.mp3 in Resources */,
 				3047ABA11A30346800C59477 /* air-horn.mp3 in Resources */,
 				305630371A2FC8940004D36F /* Oh Baby A Triple.mp3 in Resources */,
 				30AA584F1A2E7EB300AF1F88 /* LaunchScreen.xib in Resources */,
