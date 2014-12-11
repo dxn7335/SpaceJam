@@ -24,6 +24,7 @@
         _circle.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
         _circle.strokeColor = [self randomColor];
         [self addChild:_circle];
+        self.userInteractionEnabled = TRUE;
         
         _player = [[AVAudioPlayer alloc]init];
     }
@@ -76,7 +77,7 @@
     
     NSError *error;
     _player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    _player.volume = (self.recording) ? 9.0:1.0;
+    _player.volume = (self.recording) ? 10.0:1.0;
     if(error) NSLog(@"Error loading sound file! error = %@", error);
 }
 
@@ -89,11 +90,27 @@
     _player.currentTime = 0;
     _player.numberOfLoops = -1;
     [_player play];
+    
+    //change button visual
+    [self buttonTap:TRUE];
+    
+}
+
+-(void)buttonTap: (BOOL)tap{
+    if(tap){
+        [self runAction:[SKAction scaleBy:.8 duration:0.1]];
+    }
+    else{
+        [self runAction:[SKAction scaleBy:1.25 duration:0.1]];
+    }
 }
 
 // stopSound: stops looping of sound
 -(void)stopSound{
     _player.numberOfLoops = 0;
+    
+    //change button visual
+    [self buttonTap:FALSE];
 }
 
 /*

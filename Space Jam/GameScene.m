@@ -106,6 +106,7 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     if(_currentBtn != nil){
         [_currentBtn stopSound];
+        _currentBtn = nil;
     }
 }
 
