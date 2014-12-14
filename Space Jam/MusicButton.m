@@ -7,30 +7,83 @@
 //
 
 #import "MusicButton.h"
-
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
 @implementation MusicButton{
     AVAudioRecorder *_recorder;
     AVAudioPlayer *_player;
     SKShapeNode *_circle;
     SKLabelNode *_label;
+    
+    NSMutableArray *_lines;
 }
 
 -(id)initWithProperties : (int) x : (int) y : (double)width : (double)height{
     self = [super init];
     if (self != nil) {
+        _lines = [[NSMutableArray alloc]init];
+        
         self.position = CGPointMake(x, y);
         _circle = [[SKShapeNode alloc]init];
         _circle.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
         _circle.strokeColor = [self randomColor];
+        
+        self.color = _circle.strokeColor;
+        
         [self addChild:_circle];
         self.userInteractionEnabled = YES;
         
         _player = [[AVAudioPlayer alloc]init];
+        /*
+        CGRect bounds = CGRectMake(-width/2, -height/2, width+20, height+20);
+        UIBezierPath *randomPath = [UIBezierPath bezierPath];
+        [randomPath moveToPoint:RandomPoint(bounds)];
+        [randomPath addCurveToPoint:RandomPoint(bounds) controlPoint1:RandomPoint(bounds) controlPoint2:RandomPoint(bounds)];
+        
+        UIBezierPath *aPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(0,-self.frame.size.height/2)
+                                                             radius:50
+                                                         startAngle:0
+                                                           endAngle:DEGREES_TO_RADIANS(360)
+                                                          clockwise:YES];
+        
+        SKShapeNode *p = [[SKShapeNode alloc]init];
+        p.path = aPath.CGPath;
+        p.strokeColor = _circle.strokeColor;
+        [self addChild:p];
+        
+        UIBezierPath *line = [UIBezierPath bezierPath];
+        [line moveToPoint:CGPointMake(0,-self.frame.size.height/2)];
+        [line addLineToPoint:CGPointMake(50,-self.frame.size.height/2+50)];
+        SKShapeNode *p = [[SKShapeNode alloc]init];
+        p.path = line.CGPath;
+        p.strokeColor = _circle.strokeColor;
+        [self addChild:p];
+         */
+        
+        [self drawLines:_circle.position : self.frame.size.height/2+50 : DEGREES_TO_RADIANS(1)];
     }
-    
-    
     return self;
+}
+
+-(void)drawLines: (CGPoint)center : (double)radius : (double)angle{
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    [linePath moveToPoint:center];
+    CGFloat tX = center.x + radius * cos(angle);
+    CGFloat tY = center.y + radius * sin(angle);
+    CGPoint target = CGPointMake(tX, tY);
+    [linePath addLineToPoint:target];
+    SKShapeNode *line = [[SKShapeNode alloc]init];
+    line.path = linePath.CGPath;
+    line.strokeColor = self.color;
+    [self addChild:line];
+    
+    [_lines addObject:line];
+}
+
+CGPoint RandomPoint(CGRect bounds)
+{
+    return CGPointMake(CGRectGetMinX(bounds) + arc4random() % (int)CGRectGetWidth(bounds),
+                       CGRectGetMinY(bounds) + arc4random() % (int)CGRectGetHeight(bounds));
 }
 
 /*---------------------------------------------------------------------------/
@@ -204,26 +257,6 @@
     UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
     
     return color;
-}
-
-
-
-#pragma -
-#pragma mark Setting Target-Action pairs
-
-- (void)setTouchUpInsideTarget:(id)target action:(SEL)action {
-    _targetTouchUpInside = target;
-    _actionTouchUpInside = action;
-}
-
-- (void)setTouchDownTarget:(id)target action:(SEL)action {
-    _targetTouchDown = target;
-    _actionTouchDown = action;
-}
-
-- (void)setTouchUpTarget:(id)target action:(SEL)action {
-    _targetTouchUp = target;
-    _actionTouchUp = action;
 }
 
 #pragma -

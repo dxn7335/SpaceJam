@@ -91,10 +91,12 @@
         [_currentBtn stopSound];
         _currentBtn = nil;
     }
-}*/
+}
+*/
 
 -(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+    //Called before each frame is rendered
+    //NSLog(@"HIIIIIIIIIII");
 }
 
 @end
