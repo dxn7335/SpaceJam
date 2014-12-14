@@ -32,17 +32,16 @@
     // TEST: Creating buttons
     // Parameters x, y, width, height
     MusicButton *btn1 = [[MusicButton alloc] initWithProperties: self.frame.size.width/2 :self.frame.size.height/2 : 75 :75];
-    btn1.userInteractionEnabled = NO;
     //[btn1 loadSound];
     btn1.name = @"1";
     [btn1 setDefault];
     [btn1 setButton];
+    //[btn1 setTouchUpInsideTarget:self action:@selector(stopSound)];
     [self.musicBtns addObject:btn1];
     [self addChild:btn1];
     
     
     MusicButton *btn2 = [[MusicButton alloc] initWithProperties:400:400: 75: 75];
-    btn2.userInteractionEnabled = NO;
     //[btn2 loadSound];
     btn2.name = @"2";
     [btn2 setDefault];
@@ -59,30 +58,14 @@
     //[btn1 addChild:plus];
     
 }
-
+/*
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    /*
-     for (UITouch *touch in touches) {
-     CGPoint location = [touch locationInNode:self];
-     
-     SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-     
-     sprite.xScale = 0.5;
-     sprite.yScale = 0.5;
-     sprite.position = location;
-     
-     SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-     
-     [sprite runAction:[SKAction repeatActionForever:action]];
-     
-     [self addChild:sprite];
-     }
-     */
+    // Called when a touch begins
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
+
     for (MusicButton *musicNode in self.musicBtns) {
         NSLog(@"node = %@", node.parent);
         //if ([node isEqual: musicNode]) {
@@ -108,7 +91,7 @@
         [_currentBtn stopSound];
         _currentBtn = nil;
     }
-}
+}*/
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */

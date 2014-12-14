@@ -24,7 +24,7 @@
         _circle.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
         _circle.strokeColor = [self randomColor];
         [self addChild:_circle];
-        self.userInteractionEnabled = TRUE;
+        self.userInteractionEnabled = YES;
         
         _player = [[AVAudioPlayer alloc]init];
     }
@@ -71,7 +71,7 @@
         url = _recorder.url;
     }
     else{
-        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"pentakill_lol" ofType:@"mp3"];
+        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"HolyShit" ofType:@"wav"];
         url = [[NSURL alloc]initFileURLWithPath:soundPath];
     }
     
@@ -91,11 +91,9 @@
     _player.numberOfLoops = -1;
     [_player play];
     
-    //change button visual
-    [self buttonTap:TRUE];
-    
 }
 
+// Effecting Button Reaction when tapped
 -(void)buttonTap: (BOOL)tap{
     if(tap){
         [self runAction:[SKAction scaleBy:.8 duration:0.1]];
@@ -108,9 +106,6 @@
 // stopSound: stops looping of sound
 -(void)stopSound{
     _player.numberOfLoops = 0;
-    
-    //change button visual
-    [self buttonTap:FALSE];
 }
 
 /*
@@ -124,7 +119,7 @@
 // RECORDING
 /---------------------------------------------------------------------------*/
 -(void) prepareRecording{
-    NSLog(@"Reording this");
+    NSLog(@"Recording this");
     /* Visuals */
     _label.text= @"Recording";
     _label.fontSize = 13;
@@ -142,9 +137,14 @@
     
     
     /* Ready Recorder */
+    //create url string for recorded audio
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init] ;
+    [dateFormatter setDateFormat:@"yyyy-MM-dd-ss"];
+    NSString *timestamp = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *urlstring = [NSString stringWithFormat:@"audioMemo_%@.m4a", timestamp];
     NSArray *pathComponents = [NSArray arrayWithObjects:
                                [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
-                               @"MyAudioMemo.m4a",
+                               urlstring,
                                nil];
     NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
     
@@ -206,8 +206,58 @@
     return color;
 }
 
+
+
+#pragma -
+#pragma mark Setting Target-Action pairs
+
+- (void)setTouchUpInsideTarget:(id)target action:(SEL)action {
+    _targetTouchUpInside = target;
+    _actionTouchUpInside = action;
+}
+
+- (void)setTouchDownTarget:(id)target action:(SEL)action {
+    _targetTouchDown = target;
+    _actionTouchDown = action;
+}
+
+- (void)setTouchUpTarget:(id)target action:(SEL)action {
+    _targetTouchUp = target;
+    _actionTouchUp = action;
+}
+
+#pragma -
+#pragma mark Touch Handling
+
+/**
+ * This method only occurs, if the touch was inside this node. Furthermore if
+ */
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    //objc_msgSend(_targetTouchDown, _actionTouchDown, self);
+    if(self.hasSound){
+        [self playSound];
+        //change button visual
+        [self buttonTap:TRUE];
+    }
+    else{
+        NSLog(@"%d", self.recording);
+        if(!self.recording){
+            [self prepareRecording];
+            //change button visual
+            [self buttonTap:TRUE];
+        }
+        else
+            [self stopRecording];
+    }
     NSLog(@"HI");
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    if(self.hasSound){
+        [self stopSound];
+        //change button visual
+        [self buttonTap:FALSE];
+    }
 }
 
 @end

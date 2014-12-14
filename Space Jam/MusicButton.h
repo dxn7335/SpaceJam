@@ -16,6 +16,14 @@
 
 @property(nonatomic) BOOL hasSound;
 @property(nonatomic) BOOL recording;
+@property(nonatomic) BOOL tapped;
+@property (nonatomic, readonly) SEL actionTouchUpInside;
+@property (nonatomic, readonly) SEL actionTouchDown;
+@property (nonatomic, readonly) SEL actionTouchUp;
+@property (nonatomic, readonly, weak) id targetTouchUpInside;
+@property (nonatomic, readonly, weak) id targetTouchDown;
+@property (nonatomic, readonly, weak) id targetTouchUp;
+
 -(id)initWithProperties: (int) x : (int) y : (double)width : (double)height;
 // Audio
 -(void)loadSound;
@@ -27,4 +35,11 @@
 // Configuring Settings for Button
 -(void)setDefault;
 -(void)setButton;
+
+/** Sets the target-action pair, that is called when the Button is tapped.
+ "target" won't be retained.
+ */
+- (void)setTouchUpInsideTarget:(id)target action:(SEL)action;
+- (void)setTouchDownTarget:(id)target action:(SEL)action;
+- (void)setTouchUpTarget:(id)target action:(SEL)action;
 @end
