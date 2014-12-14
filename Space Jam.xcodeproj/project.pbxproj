@@ -12,6 +12,18 @@
 		305630351A2FC8610004D36F /* MusicButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 305630341A2FC8610004D36F /* MusicButton.m */; };
 		305630371A2FC8940004D36F /* Oh Baby A Triple.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 305630361A2FC8940004D36F /* Oh Baby A Triple.mp3 */; };
 		309110DC1A3CFC43002666CA /* HolyShit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 309110DB1A3CFC43002666CA /* HolyShit.wav */; };
+		309110E91A3D5510002666CA /* bridge-loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 309110DD1A3D5510002666CA /* bridge-loop.wav */; };
+		309110EA1A3D5510002666CA /* electric-future-blast.wav in Resources */ = {isa = PBXBuildFile; fileRef = 309110DE1A3D5510002666CA /* electric-future-blast.wav */; };
+		309110EB1A3D5510002666CA /* pop-click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 309110DF1A3D5510002666CA /* pop-click.wav */; };
+		309110EC1A3D5510002666CA /* rocket-flyby.wav in Resources */ = {isa = PBXBuildFile; fileRef = 309110E01A3D5510002666CA /* rocket-flyby.wav */; };
+		309110ED1A3D5510002666CA /* space-sweep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 309110E11A3D5510002666CA /* space-sweep.wav */; };
+		309110EE1A3D5510002666CA /* space1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 309110E21A3D5510002666CA /* space1.wav */; };
+		309110EF1A3D5510002666CA /* spacetumble.wav in Resources */ = {isa = PBXBuildFile; fileRef = 309110E31A3D5510002666CA /* spacetumble.wav */; };
+		309110F01A3D5510002666CA /* stab-050.wav in Resources */ = {isa = PBXBuildFile; fileRef = 309110E41A3D5510002666CA /* stab-050.wav */; };
+		309110F11A3D5510002666CA /* well-heard.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 309110E51A3D5510002666CA /* well-heard.mp3 */; };
+		309110F21A3D5510002666CA /* angry-boat-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 309110E61A3D5510002666CA /* angry-boat-2.mp3 */; };
+		309110F31A3D5510002666CA /* angry-boat-5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 309110E71A3D5510002666CA /* angry-boat-5.mp3 */; };
+		309110F41A3D5510002666CA /* breakWindow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 309110E81A3D5510002666CA /* breakWindow.wav */; };
 		30AA583C1A2E7EB300AF1F88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA583B1A2E7EB300AF1F88 /* main.m */; };
 		30AA583F1A2E7EB300AF1F88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA583E1A2E7EB300AF1F88 /* AppDelegate.m */; };
 		30AA58421A2E7EB300AF1F88 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA58411A2E7EB300AF1F88 /* GameScene.m */; };
@@ -41,6 +53,18 @@
 		305630341A2FC8610004D36F /* MusicButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicButton.m; sourceTree = "<group>"; };
 		305630361A2FC8940004D36F /* Oh Baby A Triple.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Oh Baby A Triple.mp3"; sourceTree = "<group>"; };
 		309110DB1A3CFC43002666CA /* HolyShit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HolyShit.wav; sourceTree = "<group>"; };
+		309110DD1A3D5510002666CA /* bridge-loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "bridge-loop.wav"; sourceTree = "<group>"; };
+		309110DE1A3D5510002666CA /* electric-future-blast.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "electric-future-blast.wav"; sourceTree = "<group>"; };
+		309110DF1A3D5510002666CA /* pop-click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "pop-click.wav"; sourceTree = "<group>"; };
+		309110E01A3D5510002666CA /* rocket-flyby.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "rocket-flyby.wav"; sourceTree = "<group>"; };
+		309110E11A3D5510002666CA /* space-sweep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "space-sweep.wav"; sourceTree = "<group>"; };
+		309110E21A3D5510002666CA /* space1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = space1.wav; sourceTree = "<group>"; };
+		309110E31A3D5510002666CA /* spacetumble.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spacetumble.wav; sourceTree = "<group>"; };
+		309110E41A3D5510002666CA /* stab-050.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "stab-050.wav"; sourceTree = "<group>"; };
+		309110E51A3D5510002666CA /* well-heard.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "well-heard.mp3"; sourceTree = "<group>"; };
+		309110E61A3D5510002666CA /* angry-boat-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "angry-boat-2.mp3"; sourceTree = "<group>"; };
+		309110E71A3D5510002666CA /* angry-boat-5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "angry-boat-5.mp3"; sourceTree = "<group>"; };
+		309110E81A3D5510002666CA /* breakWindow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = breakWindow.wav; sourceTree = "<group>"; };
 		30AA58361A2E7EB200AF1F88 /* Space Jam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Jam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30AA583A1A2E7EB300AF1F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30AA583B1A2E7EB300AF1F88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,6 +106,18 @@
 		305630381A2FC8C40004D36F /* Sound Files */ = {
 			isa = PBXGroup;
 			children = (
+				309110DD1A3D5510002666CA /* bridge-loop.wav */,
+				309110DE1A3D5510002666CA /* electric-future-blast.wav */,
+				309110DF1A3D5510002666CA /* pop-click.wav */,
+				309110E01A3D5510002666CA /* rocket-flyby.wav */,
+				309110E11A3D5510002666CA /* space-sweep.wav */,
+				309110E21A3D5510002666CA /* space1.wav */,
+				309110E31A3D5510002666CA /* spacetumble.wav */,
+				309110E41A3D5510002666CA /* stab-050.wav */,
+				309110E51A3D5510002666CA /* well-heard.mp3 */,
+				309110E61A3D5510002666CA /* angry-boat-2.mp3 */,
+				309110E71A3D5510002666CA /* angry-boat-5.mp3 */,
+				309110E81A3D5510002666CA /* breakWindow.wav */,
 				3047ABA01A30346800C59477 /* air-horn.mp3 */,
 				302A976C1A3A395100C0128F /* pentakill_lol.mp3 */,
 				309110DB1A3CFC43002666CA /* HolyShit.wav */,
@@ -244,13 +280,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				309110F41A3D5510002666CA /* breakWindow.wav in Resources */,
 				302A976D1A3A395100C0128F /* pentakill_lol.mp3 in Resources */,
+				309110F21A3D5510002666CA /* angry-boat-2.mp3 in Resources */,
 				3047ABA11A30346800C59477 /* air-horn.mp3 in Resources */,
+				309110F31A3D5510002666CA /* angry-boat-5.mp3 in Resources */,
+				309110ED1A3D5510002666CA /* space-sweep.wav in Resources */,
 				305630371A2FC8940004D36F /* Oh Baby A Triple.mp3 in Resources */,
+				309110F01A3D5510002666CA /* stab-050.wav in Resources */,
+				309110EA1A3D5510002666CA /* electric-future-blast.wav in Resources */,
 				30AA584F1A2E7EB300AF1F88 /* LaunchScreen.xib in Resources */,
+				309110EF1A3D5510002666CA /* spacetumble.wav in Resources */,
 				309110DC1A3CFC43002666CA /* HolyShit.wav in Resources */,
+				309110E91A3D5510002666CA /* bridge-loop.wav in Resources */,
+				309110EC1A3D5510002666CA /* rocket-flyby.wav in Resources */,
 				30AA584C1A2E7EB300AF1F88 /* Images.xcassets in Resources */,
+				309110EB1A3D5510002666CA /* pop-click.wav in Resources */,
+				309110EE1A3D5510002666CA /* space1.wav in Resources */,
 				30AA58441A2E7EB300AF1F88 /* GameScene.sks in Resources */,
+				309110F11A3D5510002666CA /* well-heard.mp3 in Resources */,
 				30AA584A1A2E7EB300AF1F88 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
