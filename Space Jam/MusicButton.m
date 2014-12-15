@@ -33,7 +33,7 @@
         self.color = _circle.strokeColor;
         
         [self addChild:_circle];
-        self.userInteractionEnabled = YES;
+        self.userInteractionEnabled = NO;
         
         _player = [[AVAudioPlayer alloc]init];
   
@@ -237,7 +237,7 @@ CGPoint RandomPoint(CGRect bounds)
     line.strokeColor = self.color;
     [self addChild:line];
     
-    SKAction *fadeout = [SKAction fadeOutWithDuration:0.6];
+    SKAction *fadeout = [SKAction fadeOutWithDuration:0.2];
     [line runAction:fadeout];
     [_lines addObject:line];
 }
@@ -265,6 +265,21 @@ CGPoint RandomPoint(CGRect bounds)
     }
 }
 
+-(void)drawOutline:(int)multiplier{
+    double width = _circle.frame.size.width * multiplier;
+    double height = _circle.frame.size.height * multiplier;
+    SKShapeNode *circle = [[SKShapeNode alloc]init];
+    circle.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
+    SKAction *fadeout = [SKAction fadeOutWithDuration:0.4];
+    [circle runAction:fadeout completion:^{
+        SKAction *remove = [SKAction removeFromParent];
+        [circle runAction:remove];
+    }];
+    //[_lines addObject:circle];
+    
+    [self addChild:circle];
+}
+
 -(void)clearLines{
     
     for(int i=0; i< _lines.count; i++){
@@ -274,16 +289,14 @@ CGPoint RandomPoint(CGRect bounds)
 }
 
 -(void)drawOnTouch {
-    __block double height = 5;
-    [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction waitForDuration:0.0005],
+    __block double multiplier = 2;
+    [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction waitForDuration:0.1],
                                                                       [SKAction runBlock:^{
-        [self clearLines];
-        [self drawPattern:height];
-        height += 0.1;
-        if(height > 200){
-            height = 5;
-        }
-        //make sure it draws one circle
+        [self drawOutline: multiplier];
+        multiplier +=0.25;
+        
+        if(multiplier > 4) multiplier = 2;
+        
         if(_tapped == 0){
             [self removeActionForKey:@"drawLines"];
         }
@@ -293,12 +306,18 @@ CGPoint RandomPoint(CGRect bounds)
 
 -(void)removeLines {
     
-    [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction waitForDuration:0.0000001],
+    [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction waitForDuration:0.2],
                                                                        [SKAction runBlock:^{
     
         if(_lines.count > 0){
+            NSLog(@"remove");
             [_lines[0] removeFromParent];
             [_lines removeObjectAtIndex:0];
+            
+            if(_lines.count > 40) [self clearLines];
+        }
+        else{
+            [self removeActionForKey:@"removeLines"];
         }
 
     }]]]] withKey:@"removelines"];
@@ -350,7 +369,7 @@ CGPoint RandomPoint(CGRect bounds)
         [self stopSound];
         //change button visual
         [self buttonTap:FALSE];
-        [self removeLines];
+        //[self removeLines];
     }
 }
 

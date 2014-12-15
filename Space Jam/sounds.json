@@ -1,0 +1,52 @@
+{
+  "sounds": [
+    {
+      "name": "angry-boat-2", 
+      "type": "mp3"
+    }, 
+    {
+      "name": "angry-boat-5", 
+      "type": "mp3"
+    },
+	{
+      "name": "breakWindow", 
+      "type": "wav"
+    },
+	{
+      "name": "bridge-loop", 
+      "type": "wav"
+    },
+	{
+      "name": "electric-future-blast", 
+      "type": "wav"
+    },
+	{
+      "name": "pop-click", 
+      "type": "wav"
+    },
+	{
+      "name": "rocket-flyby", 
+      "type": "wav"
+    },
+	{
+      "name": "space1", 
+      "type": "wav"
+    },
+	{
+      "name": "space-sweep", 
+      "type": "wav"
+    },
+	{
+      "name": "spacetumble", 
+      "type": "wav"
+    },
+	{
+      "name": "stab-050", 
+      "type": "wav"
+    },
+	{
+      "name": "well-heard", 
+      "type": "mp3"
+    }
+  ]
+}

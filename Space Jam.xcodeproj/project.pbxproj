@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30243B641A3EB08E00DC8FB6 /* RemoveButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30243B631A3EB08E00DC8FB6 /* RemoveButton.m */; };
+		30243B671A3EB14B00DC8FB6 /* EditButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30243B661A3EB14B00DC8FB6 /* EditButton.m */; };
+		30243B6A1A3EB3B100DC8FB6 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 30243B691A3EB3B100DC8FB6 /* DataStore.m */; };
+		30243B6D1A3EB47200DC8FB6 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 30243B6C1A3EB47200DC8FB6 /* Sound.m */; };
+		30243B701A3EB63800DC8FB6 /* sounds.json in Resources */ = {isa = PBXBuildFile; fileRef = 30243B6F1A3EB63800DC8FB6 /* sounds.json */; };
 		302A976D1A3A395100C0128F /* pentakill_lol.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 302A976C1A3A395100C0128F /* pentakill_lol.mp3 */; };
 		3047ABA11A30346800C59477 /* air-horn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3047ABA01A30346800C59477 /* air-horn.mp3 */; };
 		305630351A2FC8610004D36F /* MusicButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 305630341A2FC8610004D36F /* MusicButton.m */; };
@@ -33,6 +38,7 @@
 		30AA584C1A2E7EB300AF1F88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30AA584B1A2E7EB300AF1F88 /* Images.xcassets */; };
 		30AA584F1A2E7EB300AF1F88 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30AA584D1A2E7EB300AF1F88 /* LaunchScreen.xib */; };
 		30AA585B1A2E7EB300AF1F88 /* Space_JamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA585A1A2E7EB300AF1F88 /* Space_JamTests.m */; };
+		30BDEAF11A3D717300EB294A /* AddButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BDEAF01A3D717300EB294A /* AddButton.m */; };
 		3F15292F1A2FA10C00A6A5D5 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F15292E1A2FA10C00A6A5D5 /* SpriteKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +53,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30243B621A3EB08E00DC8FB6 /* RemoveButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveButton.h; sourceTree = "<group>"; };
+		30243B631A3EB08E00DC8FB6 /* RemoveButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveButton.m; sourceTree = "<group>"; };
+		30243B651A3EB14B00DC8FB6 /* EditButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditButton.h; sourceTree = "<group>"; };
+		30243B661A3EB14B00DC8FB6 /* EditButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditButton.m; sourceTree = "<group>"; };
+		30243B681A3EB3B100DC8FB6 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
+		30243B691A3EB3B100DC8FB6 /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
+		30243B6B1A3EB47200DC8FB6 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
+		30243B6C1A3EB47200DC8FB6 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
+		30243B6F1A3EB63800DC8FB6 /* sounds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sounds.json; sourceTree = "<group>"; };
 		302A976C1A3A395100C0128F /* pentakill_lol.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pentakill_lol.mp3; sourceTree = "<group>"; };
 		3047ABA01A30346800C59477 /* air-horn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "air-horn.mp3"; sourceTree = "<group>"; };
 		305630331A2FC8610004D36F /* MusicButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicButton.h; sourceTree = "<group>"; };
@@ -81,6 +96,8 @@
 		30AA58541A2E7EB300AF1F88 /* Space JamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Space JamTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30AA58591A2E7EB300AF1F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30AA585A1A2E7EB300AF1F88 /* Space_JamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Space_JamTests.m; sourceTree = "<group>"; };
+		30BDEAEF1A3D717300EB294A /* AddButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddButton.h; sourceTree = "<group>"; };
+		30BDEAF01A3D717300EB294A /* AddButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddButton.m; sourceTree = "<group>"; };
 		3F15292E1A2FA10C00A6A5D5 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -103,6 +120,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30243B6E1A3EB62400DC8FB6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				30243B6F1A3EB63800DC8FB6 /* sounds.json */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		30243B711A3EC7F900DC8FB6 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				30AA58401A2E7EB300AF1F88 /* GameScene.h */,
+				30AA58411A2E7EB300AF1F88 /* GameScene.m */,
+				30AA58431A2E7EB300AF1F88 /* GameScene.sks */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
 		305630381A2FC8C40004D36F /* Sound Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +166,16 @@
 			children = (
 				305630331A2FC8610004D36F /* MusicButton.h */,
 				305630341A2FC8610004D36F /* MusicButton.m */,
+				30BDEAEF1A3D717300EB294A /* AddButton.h */,
+				30BDEAF01A3D717300EB294A /* AddButton.m */,
+				30243B621A3EB08E00DC8FB6 /* RemoveButton.h */,
+				30243B631A3EB08E00DC8FB6 /* RemoveButton.m */,
+				30243B651A3EB14B00DC8FB6 /* EditButton.h */,
+				30243B661A3EB14B00DC8FB6 /* EditButton.m */,
+				30243B681A3EB3B100DC8FB6 /* DataStore.h */,
+				30243B691A3EB3B100DC8FB6 /* DataStore.m */,
+				30243B6B1A3EB47200DC8FB6 /* Sound.h */,
+				30243B6C1A3EB47200DC8FB6 /* Sound.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -160,14 +205,13 @@
 				30AA583D1A2E7EB300AF1F88 /* AppDelegate.h */,
 				30AA583E1A2E7EB300AF1F88 /* AppDelegate.m */,
 				305630391A2FF12F0004D36F /* Model */,
-				30AA58401A2E7EB300AF1F88 /* GameScene.h */,
-				30AA58411A2E7EB300AF1F88 /* GameScene.m */,
-				30AA58431A2E7EB300AF1F88 /* GameScene.sks */,
+				30243B711A3EC7F900DC8FB6 /* Scene */,
 				30AA58451A2E7EB300AF1F88 /* GameViewController.h */,
 				30AA58461A2E7EB300AF1F88 /* GameViewController.m */,
 				30AA58481A2E7EB300AF1F88 /* Main.storyboard */,
 				30AA584B1A2E7EB300AF1F88 /* Images.xcassets */,
 				30AA584D1A2E7EB300AF1F88 /* LaunchScreen.xib */,
+				30243B6E1A3EB62400DC8FB6 /* Data */,
 				305630381A2FC8C40004D36F /* Sound Files */,
 				30AA58391A2E7EB300AF1F88 /* Supporting Files */,
 			);
@@ -285,6 +329,7 @@
 				309110F21A3D5510002666CA /* angry-boat-2.mp3 in Resources */,
 				3047ABA11A30346800C59477 /* air-horn.mp3 in Resources */,
 				309110F31A3D5510002666CA /* angry-boat-5.mp3 in Resources */,
+				30243B701A3EB63800DC8FB6 /* sounds.json in Resources */,
 				309110ED1A3D5510002666CA /* space-sweep.wav in Resources */,
 				305630371A2FC8940004D36F /* Oh Baby A Triple.mp3 in Resources */,
 				309110F01A3D5510002666CA /* stab-050.wav in Resources */,
@@ -317,11 +362,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30243B641A3EB08E00DC8FB6 /* RemoveButton.m in Sources */,
+				30243B671A3EB14B00DC8FB6 /* EditButton.m in Sources */,
 				30AA58471A2E7EB300AF1F88 /* GameViewController.m in Sources */,
+				30243B6D1A3EB47200DC8FB6 /* Sound.m in Sources */,
 				30AA583F1A2E7EB300AF1F88 /* AppDelegate.m in Sources */,
 				30AA58421A2E7EB300AF1F88 /* GameScene.m in Sources */,
+				30BDEAF11A3D717300EB294A /* AddButton.m in Sources */,
 				30AA583C1A2E7EB300AF1F88 /* main.m in Sources */,
 				305630351A2FC8610004D36F /* MusicButton.m in Sources */,
+				30243B6A1A3EB3B100DC8FB6 /* DataStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
