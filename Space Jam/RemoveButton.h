@@ -8,6 +8,11 @@
 
 #import "EditButton.h"
 
-@interface RemoveButton : EditButton
+//class notification constant
+static NSString *kRemoveNotification = @"kRemoveNotification";
+
+@interface RemoveButton : SKSpriteNode
+
+-(id)initRemoveButton:(int) x : (int) y : (double)width : (double)height;
 
 @end

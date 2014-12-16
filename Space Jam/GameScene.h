@@ -7,10 +7,16 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "MusicButton.h"
 
-@interface GameScene : SKScene
+typedef enum: int{
+    MODE_DEFAULT,
+    MODE_ADD,
+    MODE_REMOVE,
+} SceneMode;
 
-@property NSMutableArray *musicBtns;
+@interface GameScene : SKScene <SKPhysicsContactDelegate>
 
+@property (nonatomic)SceneMode currentMode; // Used to tell what mode the player is on
+@property (nonatomic) NSMutableArray *musicBtns;
+@property (nonatomic) int maxScale;
 @end

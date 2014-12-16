@@ -8,11 +8,11 @@
 
 #import "MusicButton.h"
 #import <math.h>
+#import "DataStore.h"
+#import "Sound.h"
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
 @implementation MusicButton{
-    AVAudioRecorder *_recorder;
-    AVAudioPlayer *_player;
     SKShapeNode *_circle;
     SKLabelNode *_label;
     
@@ -20,7 +20,7 @@
     NSTimer *_drawInteral;
 }
 
--(id)initWithProperties : (int) x : (int) y : (double)width : (double)height{
+-(id)initWithProperties : (int) x : (int) y : (double)width : (double)height : (uint8_t)categorymask :(uint8_t )contactmask{
     self = [super init];
     if (self != nil) {
         _lines = [[NSMutableArray alloc]init];
@@ -29,18 +29,29 @@
         _circle = [[SKShapeNode alloc]init];
         _circle.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
         _circle.strokeColor = [self randomColor];
-        
+        _circle.glowWidth = 1;
         self.color = _circle.strokeColor;
         
         [self addChild:_circle];
         self.userInteractionEnabled = NO;
-        
+
         _player = [[AVAudioPlayer alloc]init];
+        
+        [self setDefault];
+        
+        [self addPhysics:categorymask withContact:contactmask rect:CGRectMake(-width/2, -height/2, width, height)];
   
     }
     return self;
 }
 
+-(void)addPhysics:(uint8_t)categorymask withContact:(uint8_t )contactmask rect:(CGRect)rect{
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rect.size];
+    self.physicsBody.dynamic = NO;
+    self.physicsBody.categoryBitMask = categorymask;
+    self.physicsBody.contactTestBitMask = contactmask;
+    self.physicsBody.collisionBitMask = 0;
+}
 
 CGPoint RandomPoint(CGRect bounds)
 {
@@ -86,7 +97,11 @@ CGPoint RandomPoint(CGRect bounds)
         url = _recorder.url;
     }
     else{
-        NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"HolyShit" ofType:@"wav"];
+        int i = arc4random_uniform([DataStore sharedStore].allItems.count);
+        NSLog(@"%d", i);
+        Sound *sound = [DataStore sharedStore].allItems[i];
+        NSLog(@"%@", sound);
+        NSString *soundPath = [[NSBundle mainBundle] pathForResource:sound.name ofType:sound.type];
         url = [[NSURL alloc]initFileURLWithPath:soundPath];
     }
     
@@ -97,9 +112,13 @@ CGPoint RandomPoint(CGRect bounds)
 }
 
 
-// Choose mode - Preset or Record
--(void)showOptions{
-    
+// IF ABLE TO REMOVE
+-(void)canRemove{
+    _circle.strokeColor = [UIColor redColor];
+}
+
+-(void)restoreDefault{
+    _circle.strokeColor = self.color;
 }
 
 
@@ -109,11 +128,14 @@ CGPoint RandomPoint(CGRect bounds)
  /---------------------------------------------------------------------------*/
 // playSound: plays the audio files --
 -(void)playSound{
+    _tapped = true;
+    [self glowOnTouch];
     [_player stop];
     _player.currentTime = 0;
     _player.numberOfLoops = -1;
     [_player play];
-    
+
+    //_circle.strokeColor = [self randomColor];
 }
 
 // Effecting Button Reaction when tapped
@@ -129,7 +151,16 @@ CGPoint RandomPoint(CGRect bounds)
 
 // stopSound: stops looping of sound
 -(void)stopSound{
+    _tapped = false;
     _player.numberOfLoops = 0;
+    
+    SKNode *glow = [self childNodeWithName:@"glow"];
+    SKAction *fadeout = [SKAction fadeOutWithDuration:0.4];
+    [glow runAction:fadeout completion:^{
+        SKAction *remove = [SKAction removeFromParent];;
+        [glow runAction: remove];
+    }];
+    //_circle.strokeColor = self.color;
 }
 
 /*
@@ -145,15 +176,15 @@ CGPoint RandomPoint(CGRect bounds)
 -(void) prepareRecording{
     NSLog(@"Recording this");
     /* Visuals */
-    _label.text= @"Recording";
+    _label.text= @"REC";
     _label.fontSize = 13;
     _label.position = CGPointMake(0,-_label.frame.size.height/2);
-    _label.fontColor = [UIColor blackColor];
+    _label.fontColor = [UIColor whiteColor];
     _label.fontName = @"Avenir Black";
     SKShapeNode *recCirc = [[SKShapeNode alloc]init];
     recCirc.name = @"recIcon";
-    double width = _circle.frame.size.width/2.25;
-    double height= _circle.frame.size.height/2.25;
+    double width = _circle.frame.size.width/2;
+    double height= _circle.frame.size.height/2;
     recCirc.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
     recCirc.fillColor =  [UIColor redColor];
     recCirc.strokeColor = [UIColor redColor];
@@ -198,6 +229,8 @@ CGPoint RandomPoint(CGRect bounds)
 }
 
 -(void)startRecording{
+    self.userInteractionEnabled = YES;
+    
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     
     [audioSession setActive:YES error:nil];
@@ -208,6 +241,8 @@ CGPoint RandomPoint(CGRect bounds)
 }
 
 -(void)stopRecording{
+    self.userInteractionEnabled = NO;
+    
     [_recorder stop];
     
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
@@ -223,6 +258,7 @@ CGPoint RandomPoint(CGRect bounds)
 /*----------------------------------------------------------------------/
 // TAP VISUALS
 /----------------------------------------------------------------------*/
+/*
 // draws a line from center of circle
 -(void)drawLine: (CGPoint)center : (double)radius : (double)angle{
     UIBezierPath *linePath = [UIBezierPath bezierPath];
@@ -237,7 +273,7 @@ CGPoint RandomPoint(CGRect bounds)
     line.strokeColor = self.color;
     [self addChild:line];
     
-    SKAction *fadeout = [SKAction fadeOutWithDuration:0.2];
+    SKAction *fadeout = [SKAction fadeOutWithDuration:0.1];
     [line runAction:fadeout];
     [_lines addObject:line];
 }
@@ -265,20 +301,6 @@ CGPoint RandomPoint(CGRect bounds)
     }
 }
 
--(void)drawOutline:(int)multiplier{
-    double width = _circle.frame.size.width * multiplier;
-    double height = _circle.frame.size.height * multiplier;
-    SKShapeNode *circle = [[SKShapeNode alloc]init];
-    circle.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
-    SKAction *fadeout = [SKAction fadeOutWithDuration:0.4];
-    [circle runAction:fadeout completion:^{
-        SKAction *remove = [SKAction removeFromParent];
-        [circle runAction:remove];
-    }];
-    //[_lines addObject:circle];
-    
-    [self addChild:circle];
-}
 
 -(void)clearLines{
     
@@ -286,24 +308,37 @@ CGPoint RandomPoint(CGRect bounds)
         [_lines[i] removeFromParent];
         [_lines removeObjectAtIndex:i];
     }
-}
+}*/
 
--(void)drawOnTouch {
-    __block double multiplier = 2;
-    [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction waitForDuration:0.1],
+-(void)glowOnTouch {
+    /*__block double multiplier = 2;
+    [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction waitForDuration:0.01],
                                                                       [SKAction runBlock:^{
         [self drawOutline: multiplier];
-        multiplier +=0.25;
+        multiplier +=0.05;
         
-        if(multiplier > 4) multiplier = 2;
+        if(multiplier > 3) multiplier = 2;
         
         if(_tapped == 0){
             [self removeActionForKey:@"drawLines"];
         }
         
-    }]]]] withKey:@"drawLines"];
+    }]]]] withKey:@"drawLines"];*/
+    NSLog(@"draw");
+    double width = _circle.frame.size.width * 1.75;
+    double height = _circle.frame.size.height * 1.75;
+    SKShapeNode *circle = [[SKShapeNode alloc]init];
+    circle.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
+    circle.alpha = 0;
+    circle.name = @"glow";
+    circle.strokeColor = self.color;
+    //fadein
+    SKAction *fadein = [SKAction fadeInWithDuration:0.05];
+    [circle runAction:fadein];
+    [self addChild:circle];
 }
 
+/*
 -(void)removeLines {
     
     [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction waitForDuration:0.2],
@@ -322,7 +357,7 @@ CGPoint RandomPoint(CGRect bounds)
 
     }]]]] withKey:@"removelines"];
     
-}
+}*/
 
 
 /* HELPER --------------------------------------------------*/
@@ -348,11 +383,10 @@ CGPoint RandomPoint(CGRect bounds)
         [self playSound];
         //change button visual
         [self buttonTap:TRUE];
-        [self drawOnTouch];
+        [self glowOnTouch];
     }
     else{
         if(!self.recording){
-            [self showOptions];
             [self prepareRecording];
             //change button visual
             [self buttonTap:TRUE];
@@ -364,14 +398,6 @@ CGPoint RandomPoint(CGRect bounds)
     
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    if(self.hasSound){
-        [self stopSound];
-        //change button visual
-        [self buttonTap:FALSE];
-        //[self removeLines];
-    }
-}
 
 
 @end

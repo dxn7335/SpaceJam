@@ -17,8 +17,10 @@
 @property(nonatomic) BOOL recording;
 @property(nonatomic) BOOL tapped;
 @property(nonatomic) UIColor *color;
+@property(nonatomic) AVAudioRecorder *recorder;
+@property(nonatomic) AVAudioPlayer *player;
 
--(id)initWithProperties: (int) x : (int) y : (double)width : (double)height;
+-(id)initWithProperties: (int) x : (int) y : (double)width : (double)height :(uint8_t)categorymask :(uint8_t)contactmask;
 // Audio
 -(void)loadSound;
 -(void)playSound;
@@ -29,4 +31,9 @@
 // Configuring Settings for Button
 -(void)setDefault;
 -(void)setButton;
+-(void)canRemove;
+-(void)restoreDefault;
+
+//Add physics
+-(void)addPhysics:(uint8_t)categorymask withContact:(uint8_t)contactmask rect:(CGRect)rect;
 @end

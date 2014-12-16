@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "DataStore.h" //holds list of preloaded sounds
 #import "Sound.h"
-NSString * const kBUILDING_DATA = @"sounds";
+NSString * const kSound_data = @"sounds";
 
 @interface AppDelegate ()
 
@@ -19,7 +19,7 @@ NSString * const kBUILDING_DATA = @"sounds";
 
 -(void)loadData{
     NSDictionary *jsonDictionary;
-    NSString *path = [[NSBundle mainBundle] pathForResource:kBUILDING_DATA ofType:@"json"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:kSound_data ofType:@"json"];
     NSError *error;
     NSData *jsonData =[NSData dataWithContentsOfFile:path options: NSDataReadingUncached error: &error];
     
@@ -35,31 +35,31 @@ NSString * const kBUILDING_DATA = @"sounds";
             [alert show];
         }else{
             //Must set Mutable Array to a mutable array type of object
-            NSMutableArray *soundData = [jsonDictionary[@"response"][@"docs"] mutableCopy];
+            NSMutableArray *soundData = [jsonDictionary[@"sounds"] mutableCopy];
             
             // sort mutable array alphabetically
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
             NSArray *sortDescriptors = @[sortDescriptor];
             [soundData sortUsingDescriptors:sortDescriptors];
             
-            //create an new array full of RIT Buildings to be used
-            NSMutableArray *allBuildings = [[NSMutableArray alloc] init];
+            //create an new array full of sounds to be used
+            NSMutableArray *allsounds = [[NSMutableArray alloc] init];
             
-            /* Loading RITBuildings into DatasStore */
+            /* Loading Sounds into DatasStore */
             for(NSDictionary *dictionary in soundData){
-                //create RITBuilding
-                Sound *building = [[Sound alloc] initWithDictionary:dictionary];
-                //add building to allBuildings
-                [allBuildings addObject:building];
+                Sound *sound = [[Sound alloc] initWithDictionary:dictionary];
+                [allsounds addObject:sound];
             }
             //fill datastore's allItems array
-            [DataStore sharedStore].allItems = allBuildings;
+            [DataStore sharedStore].allItems = allsounds;
+            NSLog(@"%@", [DataStore sharedStore].allItems);
         }
     }
 
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self loadData];
     return YES;
 }
 

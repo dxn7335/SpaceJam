@@ -7,10 +7,13 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "EditButton.h"
 
-@interface AddButton : EditButton
+//class notification constant
+static NSString *kAddNotification = @"kAddNotification";
 
+@interface AddButton: SKSpriteNode
+
+@property(nonatomic,copy) NSString *method; //notes how new music button is added
 -(id)initAddButton:(int) x : (int) y : (double)width : (double)height;
-
+-(void)resetButton;
 @end
