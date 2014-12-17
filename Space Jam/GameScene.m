@@ -17,19 +17,36 @@
     NSMutableArray *_signals;
     RemoveButton *_removeBtn;
     AddButton *_addBtn;
+    SKLabelNode *_instrLabel;
 }
 
 static const uint8_t signalCategory = 1;
 static const uint8_t soundBtnCategory = 2;
 static const double musicBtnSize = 50;
 
+
+
+// SETUP
 -(void)didMoveToView:(SKView *)view {
+    
     /* Setup your scene here */
     self.backgroundColor = [UIColor blackColor];
+    
+    //Background Image
+    
+    SKSpriteNode *backImg = [SKSpriteNode spriteNodeWithImageNamed:@"bg"];
+    backImg.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    backImg.zPosition = -1;
+    backImg.alpha = 0;
+    backImg.name = @"bgNode";
+    [self addChild:backImg];
+    
     self.musicBtns = [[NSMutableArray alloc] init];
+    
     //init singals array
     _signals = [NSMutableArray array];
     
+    //create preset planets
     [self createPresetPlanets];
     
     double editsize = 40;
@@ -42,13 +59,21 @@ static const double musicBtnSize = 50;
     [self addChild:_removeBtn];
     
     
+    // INSTRUCTIONS LABEL
+    _instrLabel = [[SKLabelNode alloc] initWithFontNamed:@"Avenir"];
+    _instrLabel.fontSize = 16;
+    _instrLabel.position = CGPointMake( self.frame.size.width/2+_instrLabel.fontSize*3.25, self.frame.size.height - 45);
+    _instrLabel.fontColor = [UIColor whiteColor];
+    _instrLabel.text = @"";
+    [self addChild:_instrLabel];
+    
     //Physics Collision
     self.physicsWorld.contactDelegate = self;
     
     
     //init Notification Listeners (had to do it, coach)
     [[NSNotificationCenter defaultCenter]
-     addObserver: self
+        addObserver: self
      
         selector: @selector(handleRemoveNotification:)
         name: kRemoveNotification
@@ -56,14 +81,21 @@ static const double musicBtnSize = 50;
      ];
     
     [[NSNotificationCenter defaultCenter]
-     addObserver: self
+        addObserver: self
      
-     selector: @selector(handleAddNotification:)
-     name: kAddNotification
-     object: _addBtn
+        selector: @selector(handleAddNotification:)
+        name: kAddNotification
+        object: _addBtn
      ];
     
+    
+    //init Start mode
+    [self initStartAnimation];
+    
 }
+
+
+
 
 /*------------------------------------------------------------------*/
 // HANDLE NOTIFICATIONS
@@ -86,6 +118,17 @@ static const double musicBtnSize = 50;
     
     if([addInfo[@"on"] boolValue]) {
         [self setAddMode];
+        
+        //_instrLabel.text = @"Tap anywhere to add a planet with sound";
+
+        
+        if([_addBtn.method isEqualToString:@"preset"]){
+            _instrLabel.text = @"Tap anywhere to add a planet with sound";
+        }
+        //if recording chosen
+        else if([_addBtn.method isEqualToString:@"record"]){
+            _instrLabel.text = @"Tap anywhere to add and start recording your own sound";
+        }
     }
     else {
         [self setDefaultMode];
@@ -101,7 +144,7 @@ static const double musicBtnSize = 50;
     _addBtn.userInteractionEnabled = YES;
     _removeBtn.alpha = 1;
     _removeBtn.userInteractionEnabled = YES;
-    
+    _instrLabel.text = @"";
     for (MusicButton *musicNode in self.musicBtns) {
             [musicNode restoreDefault];
     }
@@ -114,6 +157,7 @@ static const double musicBtnSize = 50;
         [musicNode canRemove];
     }
     
+    _instrLabel.text = @"Tap on a planet to remove it";
     _addBtn.alpha = 0.3;
     _addBtn.userInteractionEnabled = NO;
 }
@@ -121,7 +165,7 @@ static const double musicBtnSize = 50;
 //visuals for add mode
 -(void)setAddMode {
     self.currentMode = MODE_ADD;
-    
+    _instrLabel.text = @"Add a planet with preset sounds or record your own";
     _removeBtn.alpha = 0.3;
     _removeBtn.userInteractionEnabled = NO;
 }
@@ -134,28 +178,89 @@ static const double musicBtnSize = 50;
 -(void)createPresetPlanets{
     // TEST: Creating buttons
     // Parameters x, y, width, height
-    MusicButton *btn1 = [[MusicButton alloc] initWithProperties: self.frame.size.width/2 :self.frame.size.height/2 : 50 :50:soundBtnCategory:signalCategory];;
-    btn1.name = @"1";
+    MusicButton *btn1 = [[MusicButton alloc] initWithProperties: self.frame.size.width/3 :self.frame.size.height/1.8 : 50 :50:soundBtnCategory:signalCategory];;
     [btn1 setButton];
     [self.musicBtns addObject:btn1];
     [self addChild:btn1];
     
     
-    MusicButton *btn2 = [[MusicButton alloc] initWithProperties:400:400: 50: 50:soundBtnCategory:signalCategory];
+    MusicButton *btn2 = [[MusicButton alloc] initWithProperties:550:300: 50: 50:soundBtnCategory:signalCategory];
     //[btn2 loadSound];
-    btn2.name = @"2";
     [btn2 setButton];
     [self.musicBtns addObject:btn2];
     [self addChild:btn2];
+    
+    MusicButton *btn3 = [[MusicButton alloc] initWithProperties: self.frame.size.height-100 :560 : 50 :50:soundBtnCategory:signalCategory];;
+    [btn3 setButton];
+    [self.musicBtns addObject:btn3];
+    [self addChild:btn3];
+    
+    MusicButton *btn4 = [[MusicButton alloc] initWithProperties: 480 :100 : 50 :50:soundBtnCategory:signalCategory];;
+    [btn4 setButton];
+    [self.musicBtns addObject:btn4];
+    [self addChild:btn4];
 }
 
+
+//////////////////////////////////////////////
 // start animation settings -----------------/
 -(void) initStartAnimation{
     self.maxScale = 20;
+    
+    _addBtn.alpha = 0;
+    _removeBtn.alpha = 0;
+
+    self.currentMode = MODE_INIT;
+    
+    for( MusicButton *node in _musicBtns){
+        node.alpha = 0;
+    }
+    
+    SKShapeNode *circle = [self drawCircle:CGPointMake(self.frame.size.width/2, self.frame.size.height/2)];
+    [self addChild:circle];
+    circle.name = @"start";
+    
+    //instructions
+    SKLabelNode *label = [[SKLabelNode alloc] initWithFontNamed:@"Avenir"];
+    label.name = @"instruction";
+    label.text = @"TAP HERE TO SEND A SIGNAL";
+    label.fontSize = 15;
+    label.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2+circle.frame.size.height/2+20);
+    [self addChild:label];
+    
+    SKLabelNode *label2 = [[SKLabelNode alloc] initWithFontNamed:@"Avenir"];
+    label2.name = @"instruction2";
+    label2.text = @"THE PLANETS MAY SEND ONE BACK";
+    label2.fontSize = 15;
+    label2.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2-circle.frame.size.height+10);
+    [self addChild:label2];
 }
 
 
 /* PRIVATE METHODS */
+
+// HELPER
+-(SKShapeNode*)drawCircle: (CGPoint)point{
+    /* initial circle */
+    SKShapeNode *circle = [[SKShapeNode alloc] init];
+    //signal.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(point.x-25, point.y-25, 50, 50)].CGPath;
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddArc(path, NULL, 0, 0, 50, 0.0, (2 * M_PI), NO);
+    circle.path = path;
+    circle.position = point;
+    circle.strokeColor = [UIColor whiteColor];
+    
+    //physics
+    circle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:circle.frame.size];
+    circle.physicsBody.dynamic = YES;
+    circle.physicsBody.affectedByGravity = NO;
+    circle.physicsBody.categoryBitMask = signalCategory;
+    circle.physicsBody.contactTestBitMask = soundBtnCategory;
+    circle.physicsBody.collisionBitMask = 0;
+    
+    return circle;
+}
+
 // Creating the Signal on tap
 -(void)drawSignal: (CGPoint)point{
     
@@ -165,22 +270,9 @@ static const double musicBtnSize = 50;
     [_signals addObject:signal];
     
     /* initial circle */
-    SKShapeNode *circle = [[SKShapeNode alloc] init];
-    //signal.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(point.x-25, point.y-25, 50, 50)].CGPath;
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddArc(path, NULL, 0, 0, 50, 0.0, (2 * M_PI), NO);
-    circle.path = path;
-    circle.position = point;
-    circle.strokeColor = [UIColor whiteColor];
-    [signal addChild: circle];
+    SKShapeNode *circle = [self drawCircle:point];
+    [signal addChild:circle];
     
-    //physics
-    circle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:circle.frame.size];
-    circle.physicsBody.dynamic = YES;
-    circle.physicsBody.affectedByGravity = NO;
-    circle.physicsBody.categoryBitMask = signalCategory;
-    circle.physicsBody.contactTestBitMask = soundBtnCategory;
-    circle.physicsBody.collisionBitMask = 0;
     // Signal will constantly grow to a certain point
     __block SKAction *scale = [SKAction scaleTo:2.5 duration: 0.6];
     __block SKAction *fadeout = [SKAction fadeOutWithDuration:0.65];
@@ -190,23 +282,11 @@ static const double musicBtnSize = 50;
         [circle runAction: remove];
     }];
     
+    /////////////////
     /* RUN LOOPED SEQUENCE TO REPEAT ADDING CIRCLES */
     [signal runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction waitForDuration:0.5],
                                                                        [SKAction runBlock:^{
-        SKShapeNode *circle = [[SKShapeNode alloc] init];
-        //signal.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(point.x-25, point.y-25, 50, 50)].CGPath;
-        CGMutablePathRef path = CGPathCreateMutable();
-        CGPathAddArc(path, NULL, 0, 0, 50, 0.0, (2 * M_PI), NO);
-        circle.path = path;
-        circle.position = point;
-        circle.strokeColor = [UIColor whiteColor];
-        //physics
-        circle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:circle.frame.size];
-        circle.physicsBody.dynamic = YES;
-        circle.physicsBody.affectedByGravity = NO;
-        circle.physicsBody.categoryBitMask = signalCategory;
-        circle.physicsBody.contactTestBitMask = soundBtnCategory;
-        circle.physicsBody.collisionBitMask = 0;
+        SKShapeNode *circle = [self drawCircle:point];
         [signal addChild: circle];
         
         // Signal will constantly grow to a certain point
@@ -216,10 +296,10 @@ static const double musicBtnSize = 50;
         }];
         
     }]]]] withKey:@"drawLines"];
-
-    
 }
 
+
+// Releases signal when touch ends
 -(void)releaseSignal{
     for (SKShapeNode *signal in _signals){
         
@@ -230,15 +310,18 @@ static const double musicBtnSize = 50;
             }];
         
     }
-    
     //clears array
     [_signals removeAllObjects];
 }
 
 
+
+
+
 /////////////////////////////////////////////////////////////////////
 // TOUCH HANDLERS
-
+//////////////////////////////////////////////////////////////////
+//ON TOUCH BEGIN
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     // Called when a touch begins
     UITouch *touch = [touches anyObject];
@@ -254,15 +337,14 @@ static const double musicBtnSize = 50;
     else if (self.currentMode == MODE_ADD){
         [self addModeHandler:location];
     }
+    else if (self.currentMode == MODE_INIT){
+        [self initModeHandler:location];
+    }
 
 }
 
+//ON TOUCH ENDED ////////////////////////////////////////////////
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-   /* if(_currentBtn != nil){
-        [_currentBtn stopSound];
-        _currentBtn = nil;
-    }
-    */
     
     [self releaseSignal];
 }
@@ -277,6 +359,45 @@ static const double musicBtnSize = 50;
     }
 }
 
+
+
+
+
+
+
+
+/*  HANDLERS  */
+//---------------------------------------------------------------
+// INIT MODE HANDLER
+//---------------------------------------------------------------
+-(void) initModeHandler: (CGPoint)point{
+    SKNode *node = [self nodeAtPoint:point];
+    
+    if([node.name isEqualToString:@"start"]){
+        
+        __block SKAction *remove = [SKAction removeFromParent];
+        //Remove Instructions
+        SKNode *instr = [self childNodeWithName:@"instruction"];
+        SKNode *instr2 = [self childNodeWithName:@"instruction2"];
+        [instr runAction:remove];
+        [instr2 runAction:remove];
+        
+        // Signal will constantly grow to a certain point
+        SKAction *scale = [SKAction scaleTo:9 duration: 1];
+        SKAction *fadeout = [SKAction fadeOutWithDuration:0.9];
+        SKAction *grow = [SKAction group:@[scale,fadeout]];
+        [node runAction:grow completion:^{
+            //fade in bg
+            SKAction *fadein = [SKAction fadeInWithDuration:0.6];
+            SKNode *bg = [self childNodeWithName:@"bgNode"];
+            [bg runAction:fadein];
+            [_addBtn runAction:fadein];
+            [_removeBtn runAction:fadein];
+            [node runAction: remove];
+            [self setDefaultMode];
+        }];
+    }
+}
 
 //---------------------------------------------------------------
 // REMOVE MODE HANDLER
@@ -341,13 +462,19 @@ static const double musicBtnSize = 50;
     
     if ((firstBody.categoryBitMask & signalCategory) != 0)
     {
-        
+        //WHEN A SIGNAL HITS A PLANET/MUSIC BUTTON, IT WILL RESPOND BY PLAYING ITS SOUND
         SKNode *nodehit = (contact.bodyA.categoryBitMask & signalCategory) ? contact.bodyB.node : contact.bodyA.node;
         for (MusicButton *musicNode in self.musicBtns) {
             if ([nodehit  isEqual: musicNode]) {
-                if( !musicNode.tapped && musicNode.hasSound)
+                if( !musicNode.tapped && musicNode.hasSound){
                     [musicNode playSound];
-                    //skaction alpha to 1
+                    
+                    if(musicNode.alpha == 0){
+                        SKAction *fadein = [SKAction fadeInWithDuration:0.2];
+                        [musicNode runAction:fadein];
+                    }
+                }
+                
             }
         }
         

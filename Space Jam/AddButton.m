@@ -67,6 +67,7 @@
                 else{
                     //notifies to exit mode
                     [self hideOptions];
+                    [self resetButton];
                     [self notifyAddMode];
                 }
             }
@@ -88,7 +89,7 @@
     
 }
 
-// NOTIFICATION
+// NOTIFICATION  ///////////////////
 -(void)notifyAddMode{
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
@@ -101,13 +102,15 @@
 }
 
 // FUNCTIONALITY FUNCTIONS
+
+// show other adding options
 -(void)showOptions{
     [self createPreset];
     [self createRecord];
     _optionsShown = YES;
     //self.userInteractionEnabled = NO;
 }
-
+//hides the adding options
 -(void)hideOptions{
     SKAction *fadeout = [SKAction fadeOutWithDuration:0.3];
     SKAction *slide = [SKAction moveByX:-10 y:0 duration:0.3];
@@ -125,6 +128,7 @@
     
 }
 
+// handler when an option is selected
 -(void)selectMethod{
     for (SKNode *btn in circles) {
         if([btn.name isEqualToString:self.method]){

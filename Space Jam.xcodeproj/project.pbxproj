@@ -11,7 +11,6 @@
 		30243B671A3EB14B00DC8FB6 /* EditButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30243B661A3EB14B00DC8FB6 /* EditButton.m */; };
 		30243B6A1A3EB3B100DC8FB6 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 30243B691A3EB3B100DC8FB6 /* DataStore.m */; };
 		30243B6D1A3EB47200DC8FB6 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 30243B6C1A3EB47200DC8FB6 /* Sound.m */; };
-		30243B701A3EB63800DC8FB6 /* sounds.json in Resources */ = {isa = PBXBuildFile; fileRef = 30243B6F1A3EB63800DC8FB6 /* sounds.json */; };
 		302A976D1A3A395100C0128F /* pentakill_lol.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 302A976C1A3A395100C0128F /* pentakill_lol.mp3 */; };
 		3047ABA11A30346800C59477 /* air-horn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3047ABA01A30346800C59477 /* air-horn.mp3 */; };
 		305630351A2FC8610004D36F /* MusicButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 305630341A2FC8610004D36F /* MusicButton.m */; };
@@ -38,7 +37,13 @@
 		30AA584C1A2E7EB300AF1F88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30AA584B1A2E7EB300AF1F88 /* Images.xcassets */; };
 		30AA584F1A2E7EB300AF1F88 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30AA584D1A2E7EB300AF1F88 /* LaunchScreen.xib */; };
 		30AA585B1A2E7EB300AF1F88 /* Space_JamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA585A1A2E7EB300AF1F88 /* Space_JamTests.m */; };
+		30ADFAE91A40DCD800A643D3 /* blip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 30ADFAE51A40DCD800A643D3 /* blip.wav */; };
+		30ADFAEA1A40DCD800A643D3 /* g-5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 30ADFAE61A40DCD800A643D3 /* g-5.wav */; };
+		30ADFAEB1A40DCD800A643D3 /* g.wav in Resources */ = {isa = PBXBuildFile; fileRef = 30ADFAE71A40DCD800A643D3 /* g.wav */; };
+		30ADFAEC1A40DCD800A643D3 /* le-piano.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 30ADFAE81A40DCD800A643D3 /* le-piano.aiff */; };
+		30ADFAEE1A40DD1500A643D3 /* sounds.json in Resources */ = {isa = PBXBuildFile; fileRef = 30ADFAED1A40DD1500A643D3 /* sounds.json */; };
 		30BDEAF11A3D717300EB294A /* AddButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BDEAF01A3D717300EB294A /* AddButton.m */; };
+		30D9E9A01A41002B000454B0 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 30D9E99F1A41002B000454B0 /* bg.png */; };
 		3F15292F1A2FA10C00A6A5D5 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F15292E1A2FA10C00A6A5D5 /* SpriteKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +66,6 @@
 		30243B691A3EB3B100DC8FB6 /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
 		30243B6B1A3EB47200DC8FB6 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
 		30243B6C1A3EB47200DC8FB6 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
-		30243B6F1A3EB63800DC8FB6 /* sounds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sounds.json; sourceTree = "<group>"; };
 		302A976C1A3A395100C0128F /* pentakill_lol.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pentakill_lol.mp3; sourceTree = "<group>"; };
 		3047ABA01A30346800C59477 /* air-horn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "air-horn.mp3"; sourceTree = "<group>"; };
 		305630331A2FC8610004D36F /* MusicButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicButton.h; sourceTree = "<group>"; };
@@ -96,8 +100,14 @@
 		30AA58541A2E7EB300AF1F88 /* Space JamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Space JamTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30AA58591A2E7EB300AF1F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30AA585A1A2E7EB300AF1F88 /* Space_JamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Space_JamTests.m; sourceTree = "<group>"; };
+		30ADFAE51A40DCD800A643D3 /* blip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blip.wav; sourceTree = "<group>"; };
+		30ADFAE61A40DCD800A643D3 /* g-5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "g-5.wav"; sourceTree = "<group>"; };
+		30ADFAE71A40DCD800A643D3 /* g.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = g.wav; sourceTree = "<group>"; };
+		30ADFAE81A40DCD800A643D3 /* le-piano.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "le-piano.aiff"; sourceTree = "<group>"; };
+		30ADFAED1A40DD1500A643D3 /* sounds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sounds.json; sourceTree = "<group>"; };
 		30BDEAEF1A3D717300EB294A /* AddButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddButton.h; sourceTree = "<group>"; };
 		30BDEAF01A3D717300EB294A /* AddButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddButton.m; sourceTree = "<group>"; };
+		30D9E99F1A41002B000454B0 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		3F15292E1A2FA10C00A6A5D5 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -123,7 +133,7 @@
 		30243B6E1A3EB62400DC8FB6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				30243B6F1A3EB63800DC8FB6 /* sounds.json */,
+				30ADFAED1A40DD1500A643D3 /* sounds.json */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -141,6 +151,10 @@
 		305630381A2FC8C40004D36F /* Sound Files */ = {
 			isa = PBXGroup;
 			children = (
+				30ADFAE51A40DCD800A643D3 /* blip.wav */,
+				30ADFAE61A40DCD800A643D3 /* g-5.wav */,
+				30ADFAE71A40DCD800A643D3 /* g.wav */,
+				30ADFAE81A40DCD800A643D3 /* le-piano.aiff */,
 				309110DD1A3D5510002666CA /* bridge-loop.wav */,
 				309110DE1A3D5510002666CA /* electric-future-blast.wav */,
 				309110DF1A3D5510002666CA /* pop-click.wav */,
@@ -202,6 +216,7 @@
 		30AA58381A2E7EB200AF1F88 /* Space Jam */ = {
 			isa = PBXGroup;
 			children = (
+				30ADFAF11A40E12C00A643D3 /* images */,
 				30AA583D1A2E7EB300AF1F88 /* AppDelegate.h */,
 				30AA583E1A2E7EB300AF1F88 /* AppDelegate.m */,
 				305630391A2FF12F0004D36F /* Model */,
@@ -242,6 +257,14 @@
 				30AA58591A2E7EB300AF1F88 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		30ADFAF11A40E12C00A643D3 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				30D9E99F1A41002B000454B0 /* bg.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,21 +347,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30D9E9A01A41002B000454B0 /* bg.png in Resources */,
+				30ADFAEB1A40DCD800A643D3 /* g.wav in Resources */,
 				309110F41A3D5510002666CA /* breakWindow.wav in Resources */,
 				302A976D1A3A395100C0128F /* pentakill_lol.mp3 in Resources */,
 				309110F21A3D5510002666CA /* angry-boat-2.mp3 in Resources */,
 				3047ABA11A30346800C59477 /* air-horn.mp3 in Resources */,
 				309110F31A3D5510002666CA /* angry-boat-5.mp3 in Resources */,
-				30243B701A3EB63800DC8FB6 /* sounds.json in Resources */,
 				309110ED1A3D5510002666CA /* space-sweep.wav in Resources */,
 				305630371A2FC8940004D36F /* Oh Baby A Triple.mp3 in Resources */,
 				309110F01A3D5510002666CA /* stab-050.wav in Resources */,
 				309110EA1A3D5510002666CA /* electric-future-blast.wav in Resources */,
 				30AA584F1A2E7EB300AF1F88 /* LaunchScreen.xib in Resources */,
+				30ADFAEC1A40DCD800A643D3 /* le-piano.aiff in Resources */,
 				309110EF1A3D5510002666CA /* spacetumble.wav in Resources */,
+				30ADFAEE1A40DD1500A643D3 /* sounds.json in Resources */,
 				309110DC1A3CFC43002666CA /* HolyShit.wav in Resources */,
+				30ADFAEA1A40DCD800A643D3 /* g-5.wav in Resources */,
 				309110E91A3D5510002666CA /* bridge-loop.wav in Resources */,
 				309110EC1A3D5510002666CA /* rocket-flyby.wav in Resources */,
+				30ADFAE91A40DCD800A643D3 /* blip.wav in Resources */,
 				30AA584C1A2E7EB300AF1F88 /* Images.xcassets in Resources */,
 				309110EB1A3D5510002666CA /* pop-click.wav in Resources */,
 				309110EE1A3D5510002666CA /* space1.wav in Resources */,

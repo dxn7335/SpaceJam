@@ -9,6 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 typedef enum: int{
+    MODE_INIT,
     MODE_DEFAULT,
     MODE_ADD,
     MODE_REMOVE,

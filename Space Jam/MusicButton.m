@@ -29,7 +29,6 @@
         _circle = [[SKShapeNode alloc]init];
         _circle.path =[UIBezierPath bezierPathWithOvalInRect:CGRectMake(-width/2, -height/2, width, height)].CGPath;
         _circle.strokeColor = [self randomColor];
-        _circle.glowWidth = 1;
         self.color = _circle.strokeColor;
         
         [self addChild:_circle];
@@ -324,7 +323,6 @@ CGPoint RandomPoint(CGRect bounds)
         }
         
     }]]]] withKey:@"drawLines"];*/
-    NSLog(@"draw");
     double width = _circle.frame.size.width * 1.75;
     double height = _circle.frame.size.height * 1.75;
     SKShapeNode *circle = [[SKShapeNode alloc]init];

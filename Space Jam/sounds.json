@@ -47,6 +47,18 @@
 	{
       "name": "well-heard", 
       "type": "mp3"
+    },
+	{
+      "name": "g", 
+      "type": "wav"
+    },
+	{
+      "name": "g-5", 
+      "type": "wav"
+    },
+	{
+      "name": "blip", 
+      "type": "wav"
     }
   ]
 }
